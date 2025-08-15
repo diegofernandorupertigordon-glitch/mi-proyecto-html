@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso por Teclado y LCD - Arduino</title>
+  <style>
+    :root { font-size: 16px; }
+    @media (min-width: 600px) { :root { font-size: 18px; } }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0; padding: 0;
+      background-color: #f4f7f8;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #2a9d8f, #21867a);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      background-color: #264653;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover { background-color: #2a9d8f; }
+
+    main {
+      padding: 1rem; max-width: 900px; margin: auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #264653;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border: none;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      iframe {
+        height: 600px;
+      }
+    }
+
+    .btn-siguiente {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #2a9d8f;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      margin: 2rem auto;
+      transition: background 0.3s ease;
+    }
+
+    .btn-siguiente:hover {
+      background-color: #21867a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #264653;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ingreso por Teclado y Visualización en LCD - Arduino</h1>
+  </header>
+
+  <nav>
+    <a href="#introduccion">Introducción</a>
+    <a href="#objetivo">Objetivo</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#codigo">Código</a>
+    <a href="#simulacion">Simulación</a>
+    <a href="#conclusion">Conclusión</a>
+  </nav>
+
+  <main>
+    <!-- Introducción -->
+    <section id="introduccion">
+      <h2>1. Introducción</h2>
+      <p>
+        Este proyecto permite ingresar datos mediante un teclado matricial y mostrar la entrada en una pantalla LCD.
+        Se incorpora un sistema de validación de contraseña con alertas visuales (LED) y sonoras (buzzer) en caso de error.
+      </p>
+    </section>
+
+    <!-- Objetivo -->
+    <section id="objetivo">
+      <h2>2. Objetivo</h2>
+      <p>
+        Desarrollar un sistema de ingreso por teclado que muestre en pantalla LCD lo ingresado y verifique una contraseña,
+        proporcionando retroalimentación al usuario mediante LED y buzzer, aprendiendo conceptos de entrada/salida digital en Arduino.
+      </p>
+    </section>
+
+    <!-- Componentes -->
+    <section id="componentes">
+      <h2>3. Componentes</h2>
+      <ul>
+        <li>Pantalla LCD 16x2</li>
+        <li>Teclado matricial 4x4</li>
+        <li>Arduino Uno/Nano o similar</li>
+        <li>LED indicador</li>
+        <li>Buzzer</li>
+        <li>Resistencias según necesidad</li>
+        <li>Cables y protoboard</li>
+      </ul>
+    </section>
+
+    <!-- Código -->
+    <section id="codigo">
+      <h2>4. Código de Arduino</h2>
+      <pre><code>#include &lt;LiquidCrystal.h&gt;
+#include &lt;Keypad.h&gt;
+
+// Configuración LCD
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
+
+// Configuración teclado
+const byte FILAS = 4;
+const byte COLUMNAS = 4;
+
+char teclas[FILAS][COLUMNAS] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
+};
+
+byte pinesFilas[FILAS] = {A1, A0, 13, 12}; 
+byte pinesColumnas[COLUMNAS] = {11, 10, 9, 8};
+
+Keypad teclado = Keypad(makeKeymap(teclas), pinesFilas, pinesColumnas, FILAS, COLUMNAS);
+
+// Configuración LED y buzzer
+const int ledPin = 12;
+const int buzzerPin = 11;
+
+String password = "1234";
+String ingreso = "";
+
+void setup() {
+  lcd.begin(16, 2);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
+  digitalWrite(buzzerPin, LOW);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Ingrese clave:");
+}
+
+void loop() {
+  char tecla = teclado.getKey();
+  if(tecla){
+    if(tecla=='#'){
+      if(ingreso==password){
+        lcd.clear();
+        lcd.setCursor(4,0);
+        lcd.print("Correcto");
+        digitalWrite(ledPin,HIGH);
+        digitalWrite(buzzerPin,LOW);
+      } else {
+        lcd.clear();
+        lcd.setCursor(3,0);
+        lcd.print("Incorrecto");
+        digitalWrite(ledPin,LOW);
+        unsigned long tiempoInicio=millis();
+        while(millis()-tiempoInicio<2000){
+          digitalWrite(buzzerPin,HIGH); delay(200);
+          digitalWrite(buzzerPin,LOW); delay(200);
+        }
+      }
+      ingreso="";
+      delay(1500);
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Ingrese clave:");
+    } else if(tecla=='*'){
+      ingreso="";
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Ingrese clave:");
+    } else {
+      ingreso+=tecla;
+      lcd.setCursor(0,1);
+      for(int i=0;i<ingreso.length();i++) lcd.print("*");
+    }
+  }
+}</code></pre>
+    </section>
+
+    <!-- Simulación -->
+ <section id="simulacion">
+  <h2>5. Simulación en Tinkercad</h2>
+  <iframe src="https://www.tinkercad.com/embed/7HweQ8LGwfm?editbtn=1" scrolling="no"></iframe>
+  <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    El iframe permite interactuar con la simulación directamente desde la página, observar la entrada del usuario y cómo se muestra en el LCD, así como las alertas en LED y buzzer.
+  </p>
+</section>
+
+<section id="conclusion">
+  <h2>6. Conclusión</h2>
+  <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    Este proyecto facilita la comprensión de la interacción entre entradas digitales (teclado) y salidas visuales y sonoras (LCD, LED, buzzer), reforzando conceptos de programación y electrónica con Arduino.
+  </p>
+  <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    La simulación en Tinkercad permite experimentar de forma segura y visual, verificando el funcionamiento del sistema sin necesidad de hardware físico.
+  </p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>Diseñado para VS Code • Funciones LCD con Arduino</p>
+  </footer>
+</body>
+</html>
