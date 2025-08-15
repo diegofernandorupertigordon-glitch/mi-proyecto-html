@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protoboard y Conexiones</title>
+  <style>
+    :root { font-size: 16px; }
+    @media (min-width: 600px) { :root { font-size: 18px; } }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0; padding: 0;
+      background-color: #f4f7f8; color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #2a9d8f, #21867a);
+      color: white; padding: 1rem; text-align: center;
+    }
+    nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      background-color: #264653; padding: 0.5rem;
+    }
+    nav a {
+      color: white; text-decoration: none;
+      padding: 0.5rem 1rem; border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover { background-color: #2a9d8f; }
+    main {
+      padding: 1rem; max-width: 900px; margin: auto;
+    }
+    section {
+      margin-bottom: 2rem;
+      background: white; padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h2 {
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.5rem; margin-bottom: 1rem;
+      color: #264653;
+    }
+    img {
+      max-width: 100%; height: auto;
+      border-radius: 6px; margin-bottom: 1rem;
+    }
+    table {
+      width: 100%; border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc; padding: 0.75rem;
+      text-align: center;
+    }
+    th { background-color: #e9ecef; }
+    pre {
+      background-color: #1e1e1e; color: #dcdcdc;
+      padding: 1rem; border-radius: 5px;
+      overflow-x: auto;
+    }
+    footer {
+      text-align: center; padding: 1rem;
+      background-color: #264653; color: white;
+      font-size: 0.9rem;
+    }
+    .btn-pagina2 {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a9d8f;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .btn-pagina2:hover { background-color: #21867a; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Protoboard y Conexiones</h1>
+</header>
+
+<nav>
+  <a href="#introduccion">Introducción</a>
+  <a href="#estructura">Estructura del Protoboard</a>
+  <a href="#conexiones">Conexiones</a>
+  <a href="#uso">Uso Práctico</a>
+  <a href="#ejemplo">Ejemplo</a>
+</nav>
+
+<main>
+  <section id="introduccion">
+    <h2>1. Introducción</h2>
+    <p>El protoboard es una herramienta esencial para la electrónica y la experimentación con circuitos eléctricos. Permite realizar prototipos sin necesidad de soldadura, facilitando pruebas rápidas y cambios de diseño.</p>
+    <img src="https://ielectel.com/wp-content/uploads/2024/01/que-es-y-cuales-son-las-partes-de-un-protoboard.webp" alt="Protoboard">
+  </section>
+
+  <section id="estructura">
+    <h2>2. Estructura del Protoboard</h2>
+    <p>Un protoboard tiene varias filas y columnas de contactos metálicos donde se insertan los componentes electrónicos. Normalmente incluye:</p>
+    <ul>
+      <li>Filas de alimentación (positiva y negativa) a los lados.</li>
+      <li>Columnas de conexión para los componentes.</li>
+      <li>Conexiones internas que permiten distribuir la electricidad sin cables adicionales.</li>
+    </ul>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYJhh6oGhqq4gwWrTAb16tOvKyqCaasfco3g&s" alt="Estructura protoboard">
+  </section>
+
+  <section id="conexiones">
+    <h2>3. Conexiones</h2>
+    <p>Las filas de alimentación suelen conectarse a la fuente de voltaje. Las columnas internas permiten conectar resistencias, LEDs, sensores y otros componentes de manera rápida:</p>
+    <ul>
+      <li>Insertar un cable en la misma fila conecta todos los puntos metálicos de esa fila.</li>
+      <li>Las columnas están separadas en dos bloques, permitiendo conectar chips integrados en la parte central.</li>
+      <li>Se pueden realizar puentes con cables para conectar distintas secciones del protoboard.</li>
+    </ul>
+    <img src="https://robinsonrodrigueztoro.com/aula/images/electronica/protoboard.png" alt="Conexiones en protoboard">
+  </section>
+
+  <section id="uso">
+    <h2>4. Uso Práctico</h2>
+    <p>Para usar un protoboard de manera efectiva:</p>
+    <ol>
+      <li>Conectar la fuente de alimentación a las filas de power (roja y azul).</li>
+      <li>Colocar componentes como resistencias, LEDs, sensores en las filas internas.</li>
+      <li>Usar cables puente para interconectar los componentes según el esquema del circuito.</li>
+    </ol>
+    <img src="https://blog.uelectronics.com/wp-content/uploads/2020/10/Prender_Led_Boton-1-696x464.jpg1" alt="Uso de protoboard">
+  </section>
+
+  <section id="ejemplo">
+    <h2>5. Ejemplo de Circuito</h2>
+    <p>Ejemplo: Encendido de un LED con resistencia usando un protoboard y fuente de 5V.</p>
+    <iframe src="https://www.tinkercad.com/embed/2V1gqgWb9P5" width="800" height="600" frameborder="0"></iframe>
+    <p>Este circuito demuestra cómo se conecta un LED en serie con una resistencia para limitar la corriente, usando únicamente el protoboard.</p>
+  </section>
+
+  <section id="siguiente">
+    <h2>6. Página Siguiente</h2>
+    <p>Para continuar, puedes revisar un proyecto práctico con sensor ultrasónico y protoboard:</p>
+    <a href="sensor_ultrasonico.html" class="btn-pagina2">Ir al Sensor Ultrasónico</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Diseñado para VS Code • Protoboard y Conexiones Electrónicas</p>
+</footer>
+
+</body>
+</html>

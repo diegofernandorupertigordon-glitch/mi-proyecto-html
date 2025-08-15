@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversiones entre Sistemas Numéricos</title>
+  <style>
+    :root { font-size: 16px; }
+    @media (min-width: 600px) { :root { font-size: 18px; } }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0; padding: 0;
+      background-color: #f4f7f8; color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #2a9d8f, #21867a);
+      color: white; padding: 1rem; text-align: center;
+    }
+    nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      background-color: #264653; padding: 0.5rem;
+    }
+    nav a {
+      color: white; text-decoration: none;
+      padding: 0.5rem 1rem; border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover { background-color: #2a9d8f; }
+    main {
+      padding: 1rem; max-width: 900px; margin: auto;
+    }
+    section {
+      margin-bottom: 2rem;
+      background: white; padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h2 {
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.5rem; margin-bottom: 1rem;
+      color: #264653;
+    }
+    img {
+      max-width: 100%; height: auto;
+      border-radius: 6px; margin-bottom: 1rem;
+    }
+    pre {
+      background-color: #1e1e1e; color: #dcdcdc;
+      padding: 1rem; border-radius: 5px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%; border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc; padding: 0.75rem;
+      text-align: center;
+    }
+    th { background-color: #e9ecef; }
+    footer {
+      text-align: center; padding: 1rem;
+      background-color: #264653; color: white;
+      font-size: 0.9rem;
+    }
+    .btn-pagina2 {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a9d8f;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .btn-pagina2:hover { background-color: #21867a; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Conversiones entre Sistemas Numéricos</h1>
+</header>
+
+<nav>
+  <a href="#binario-decimal">Binario → Decimal</a>
+  <a href="#octal-decimal">Octal → Decimal</a>
+  <a href="#hex-decimal">Hexadecimal → Decimal</a>
+  <a href="#decimal-binario">Decimal → Binario</a>
+  <a href="#decimal-octal">Decimal → Octal</a>
+  <a href="#decimal-hex">Decimal → Hexadecimal</a>
+</nav>
+
+<main>
+  <section id="binario-decimal">
+    <h2>1. Binario a Decimal</h2>
+    <p>Se multiplica cada dígito binario por 2 elevado a la posición que ocupa (de derecha a izquierda empezando en 0) y se suman los resultados.</p>
+    <pre>11000011₂ = 1×2⁷ + 1×2⁶ + 0×2⁵ + 0×2⁴ + 0×2³ + 0×2² + 1×2¹ + 1×2⁰ = 128 + 64 + 2 + 1 = 195₁₀</pre>
+    <img src="https://lauris2303.wordpress.com/wp-content/uploads/2013/03/binario.png" alt="Binario a Decimal">
+  </section>
+
+  <section id="octal-decimal">
+    <h2>2. Octal a Decimal</h2>
+    <p>Se multiplica cada dígito octal por 8 elevado a la posición que ocupa (de derecha a izquierda empezando en 0) y se suman los resultados.</p>
+    <pre>303₈ = 3×8² + 0×8¹ + 3×8⁰ = 192 + 0 + 3 = 195₁₀</pre>
+    <img src="https://www.onlinemath4all.com/images/xoctal2decimal.png.pagespeed.ic.eEDeGkjxrk.png" alt="Octal a Decimal">
+  </section>
+
+  <section id="hex-decimal">
+    <h2>3. Hexadecimal a Decimal</h2>
+    <p>Se multiplica cada dígito hexadecimal por 16 elevado a la posición que ocupa y se suman los resultados. Los dígitos A-F equivalen a 10-15.</p>
+    <pre>C3₁₆ = 12×16¹ + 3×16⁰ = 192 + 3 = 195₁₀</pre>
+    <img src="https://ielectel.com/wp-content/uploads/2023/12/convertir-de-hexadecimal-a-decimal.webp" alt="Hexadecimal a Decimal">
+  </section>
+
+  <section id="decimal-binario">
+    <h2>4. Decimal a Binario</h2>
+    <p>Se divide el número decimal entre 2 sucesivamente, guardando los restos, hasta obtener cociente 0. Luego se leen los restos en orden inverso.</p>
+    <pre>83₁₀ → 83 ÷ 2 = 41 r1 → 41 ÷ 2 = 20 r1 → 20 ÷ 2 = 10 r0 → 10 ÷ 2 = 5 r0 → 5 ÷ 2 = 2 r1 → 2 ÷ 2 = 1 r0 → 1 ÷ 2 = 0 r1
+Resultado binario: 1010011₂</pre>
+    <img src="https://i.ytimg.com/vi/3xGIXz2dza0/maxresdefault.jpg" alt="Decimal a Binario">
+  </section>
+
+  <section id="decimal-octal">
+    <h2>5. Decimal a Octal</h2>
+    <p>Se divide el número decimal entre 8 sucesivamente, guardando los restos, y se leen en orden inverso.</p>
+    <pre>83₁₀ → 83 ÷ 8 = 10 r3 → 10 ÷ 8 = 1 r2 → 1 ÷ 8 = 0 r1
+Resultado octal: 123₈</pre>
+    <img src="https://i.ytimg.com/vi/gXOKKw7_ob4/maxresdefault.jpg" alt="Decimal a Octal">
+  </section>
+
+  <section id="decimal-hex">
+    <h2>6. Decimal a Hexadecimal</h2>
+    <p>Se divide el número decimal entre 16 sucesivamente, guardando los restos, y se leen en orden inverso. Los restos mayores a 9 se representan con A-F.</p>
+    <pre>83₁₀ → 83 ÷ 16 = 5 r3 → 5 ÷ 16 = 0 r5
+Resultado hexadecimal: 53₁₆</pre>
+    <img src="https://ielectel.com/wp-content/uploads/2023/12/convertir-de-decimal-a-hexadecimal.webp" alt="Decimal a Hexadecimal">
+  </section>
+
+  <section id="siguiente">
+    <h2>7. Página Siguiente</h2>
+    <p>Para continuar, revisa el proyecto de interacción con teclado y LCD:</p>
+    <a href="protoboard.html" class="btn-pagina2">Siguiente: Interacción Teclado-LCD</a>
+  </section>
+</main>
+
+<footer>
+  <p>Diseñado para VS Code • Conversiones entre Sistemas Numéricos</p>
+</footer>
+
+</body>
+</html>

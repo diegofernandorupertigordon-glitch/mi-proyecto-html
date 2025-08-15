@@ -65,7 +65,6 @@
       background-color: #264653; color: white;
       font-size: 0.9rem;
     }
-    /* Estilo del botón final */
     .btn-pagina2 {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -76,74 +75,79 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
-    .btn-pagina2:hover {
-      background-color: #21867a;
-    }
+    .btn-pagina2:hover { background-color: #21867a; }
   </style>
 </head>
 <body>
-  <header><h1>Compuertas Lógicas y Arduino</h1></header>
-  <nav>
-    <a href="#introduccion">Introducción</a>
-    <a href="#tipos">Tipos de compuertas</a>
-    <a href="#tablas">Tablas de verdad</a>
-    <a href="#arduino">Arduino</a>
-  </nav>
-  <main>
-    <section id="introduccion">
-      <h2>1. Introducción</h2>
-      <p>Una compuerta lógica procesa señales binarias (0 o 1) para producir una salida basada en una operación booleana. Son esenciales para la electrónica digital.</p>
-    </section>
-    <section id="tipos">
-      <h2>2. Tipos de compuertas</h2>
-      <img src="https://images.theengineeringprojects.com/image/webp/2023/08/dld-logic-gates-symbols.jpg.webp?ssl=1" alt="Símbolos de compuertas lógicas">
-      <ul>
-        <li>AND, OR, NOT</li>
-        <li>NAND, NOR</li>
-        <li>XOR, XNOR, Buffer</li>
-      </ul>
-    </section>
-    <section id="tablas">
-      <h2>3. Tablas de verdad</h2>
-      <img src="https://images.theengineeringprojects.com/image/webp/2023/08/symbols-truth-tables-of-common-logic-gates.jpg.webp?ssl=1" alt="Tablas de verdad de compuertas lógicas">
-      <table>
-        <thead>
-          <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>XOR</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-          <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-          <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
-        </tbody>
-      </table>
-    </section>
-    <section id="arduino">
-      <h2>4. Implementación con Arduino</h2>
-      <iframe src="https://www.tinkercad.com/embed/hlGdy7UnBxM" width="800" height="600" frameborder="0"></iframe>
-      <h3>Conclusión del circuito</h3>
-      <p>
-        El circuito diseñado en Tinkercad demuestra de manera práctica cómo funcionan las compuertas lógicas básicas (AND, OR y NOT) y cómo se pueden combinar para procesar señales binarias.
-        La simulación permite observar el comportamiento de cada compuerta en tiempo real: la compuerta AND solo activa la salida cuando ambas entradas están en alto,
-        la compuerta OR activa la salida si al menos una entrada es alta, y la compuerta NOT invierte el estado de su entrada.
-      </p>
-      <p>
-        Esta experiencia refuerza la comprensión de la lógica digital y su implementación en microcontroladores como Arduino.
-        Además, el uso de Tinkercad como plataforma de simulación facilita la experimentación sin necesidad de componentes físicos,
-        haciendo el aprendizaje más seguro, accesible y visual.
-      </p>
-    </section>
 
-    <!-- Sección de enlace a la página 2 -->
-    <section id="pagina2">
-      <h2>5. Proyecto Sensor Ultrasónico</h2>
-      <p>Para continuar aprendiendo sobre Arduino, puedes explorar un proyecto práctico usando un sensor ultrasónico que activa un LED y un buzzer según la distancia medida.</p>
-      <a href="sensor_ultrasonico.html" class="btn-pagina2">Ir al Sensor Ultrasónico</a>
-    </section>
+<header>
+  <h1>Compuertas Lógicas y Arduino</h1>
+</header>
 
-  </main>
-  <footer>
-    <p>Diseñado para VS Code • Compuertas lógicas con estilo moderno y responsivo</p>
-  </footer>
+<nav>
+  <a href="#introduccion">Introducción</a>
+  <a href="#tipos">Tipos de compuertas</a>
+  <a href="#tablas">Tablas de verdad</a>
+  <a href="#arduino">Arduino</a>
+</nav>
+
+<main>
+  <section id="introduccion">
+    <h2>1. Introducción</h2>
+    <p>Una compuerta lógica procesa señales binarias (0 o 1) para producir una salida basada en una operación booleana. Son esenciales para la electrónica digital.</p>
+  </section>
+
+  <section id="tipos">
+    <h2>2. Tipos de compuertas</h2>
+    <img src="https://images.theengineeringprojects.com/image/webp/2023/08/dld-logic-gates-symbols.jpg.webp?ssl=1" alt="Símbolos de compuertas lógicas">
+    <ul>
+      <li>AND, OR, NOT</li>
+      <li>NAND, NOR</li>
+      <li>XOR, XNOR, Buffer</li>
+    </ul>
+  </section>
+
+  <section id="tablas">
+    <h2>3. Tablas de verdad</h2>
+    <img src="https://images.theengineeringprojects.com/image/webp/2023/08/symbols-truth-tables-of-common-logic-gates.jpg.webp?ssl=1" alt="Tablas de verdad de compuertas lógicas">
+    <table>
+      <thead>
+        <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>XOR</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="arduino">
+    <h2>4. Implementación con Arduino</h2>
+    <iframe src="https://www.tinkercad.com/embed/hlGdy7UnBxM" width="800" height="600" frameborder="0"></iframe>
+    <h3>Conclusión del circuito</h3>
+    <p>
+      El circuito diseñado en Tinkercad demuestra cómo funcionan las compuertas lógicas básicas (AND, OR y NOT) y cómo se pueden combinar para procesar señales binarias.
+      La simulación permite observar el comportamiento de cada compuerta en tiempo real.
+    </p>
+    <p>
+      Esta experiencia refuerza la comprensión de la lógica digital y su implementación en microcontroladores como Arduino.
+      Además, el uso de Tinkercad facilita la experimentación sin componentes físicos.
+    </p>
+  </section>
+
+  <section id="pagina2">
+    <h2>5. Proyecto Sensor Ultrasónico</h2>
+    <p>Para continuar aprendiendo sobre Arduino, puedes explorar un proyecto práctico usando un sensor ultrasónico que activa un LED y un buzzer según la distancia medida.</p>
+    <a href="sistemas_numeracion" class="btn-pagina2">Ir al Sensor Ultrasónico</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Diseñado para VS Code • Compuertas lógicas con estilo moderno y responsivo</p>
+</footer>
+
 </body>
 </html>
