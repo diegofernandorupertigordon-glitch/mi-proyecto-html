@@ -142,7 +142,7 @@ Resultado hexadecimal: 53₁₆</pre>
   <section id="siguiente">
     <h2>7. Página Siguiente</h2>
     <p>Para continuar, revisa el proyecto de interacción con teclado y LCD:</p>
-    <a href="protoboard.html" class="btn-pagina2">Siguiente: Interacción Teclado-LCD</a>
+    <a href="protoboard.html" class="btn-pagina2">Siguiente: Protoboard</a>
   </section>
 </main>
 
