@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compuertas Lógicas con Arduino</title>
+  <style>
+    :root { font-size: 16px; }
+    @media (min-width: 600px) { :root { font-size: 18px; } }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0; padding: 0;
+      background-color: #f4f7f8; color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #2a9d8f, #21867a);
+      color: white; padding: 1rem; text-align: center;
+    }
+    nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      background-color: #264653; padding: 0.5rem;
+    }
+    nav a {
+      color: white; text-decoration: none;
+      padding: 0.5rem 1rem; border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover { background-color: #2a9d8f; }
+    main {
+      padding: 1rem; max-width: 900px; margin: auto;
+    }
+    section {
+      margin-bottom: 2rem;
+      background: white; padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h2 {
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.5rem; margin-bottom: 1rem;
+      color: #264653;
+    }
+    img {
+      max-width: 100%; height: auto;
+      border-radius: 6px; margin-bottom: 1rem;
+    }
+    table {
+      width: 100%; border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc; padding: 0.75rem;
+      text-align: center;
+    }
+    th { background-color: #e9ecef; }
+    pre {
+      background-color: #1e1e1e; color: #dcdcdc;
+      padding: 1rem; border-radius: 5px;
+      overflow-x: auto;
+    }
+    footer {
+      text-align: center; padding: 1rem;
+      background-color: #264653; color: white;
+      font-size: 0.9rem;
+    }
+    .btn-pagina2 {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a9d8f;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .btn-pagina2:hover { background-color: #21867a; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Compuertas Lógicas y Arduino</h1>
+</header>
+
+<nav>
+  <a href="#introduccion">Introducción</a>
+  <a href="#tipos">Tipos de compuertas</a>
+  <a href="#tablas">Tablas de verdad</a>
+  <a href="#arduino">Arduino</a>
+</nav>
+
+<main>
+  <section id="introduccion">
+    <h2>1. Introducción</h2>
+    <p>Una compuerta lógica procesa señales binarias (0 o 1) para producir una salida basada en una operación booleana. Son esenciales para la electrónica digital.</p>
+  </section>
+
+  <section id="tipos">
+    <h2>2. Tipos de compuertas</h2>
+    <img src="https://images.theengineeringprojects.com/image/webp/2023/08/dld-logic-gates-symbols.jpg.webp?ssl=1" alt="Símbolos de compuertas lógicas">
+    <ul>
+      <li>AND, OR, NOT</li>
+      <li>NAND, NOR</li>
+      <li>XOR, XNOR, Buffer</li>
+    </ul>
+  </section>
+
+  <section id="tablas">
+    <h2>3. Tablas de verdad</h2>
+    <img src="https://images.theengineeringprojects.com/image/webp/2023/08/symbols-truth-tables-of-common-logic-gates.jpg.webp?ssl=1" alt="Tablas de verdad de compuertas lógicas">
+    <table>
+      <thead>
+        <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>XOR</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="arduino">
+    <h2>4. Implementación con Arduino</h2>
+    <iframe src="https://www.tinkercad.com/embed/hlGdy7UnBxM" width="800" height="600" frameborder="0"></iframe>
+    <h3>Conclusión del circuito</h3>
+    <p>
+      El circuito diseñado en Tinkercad demuestra cómo funcionan las compuertas lógicas básicas (AND, OR y NOT) y cómo se pueden combinar para procesar señales binarias.
+      La simulación permite observar el comportamiento de cada compuerta en tiempo real.
+    </p>
+    <p>
+      Esta experiencia refuerza la comprensión de la lógica digital y su implementación en microcontroladores como Arduino.
+      Además, el uso de Tinkercad facilita la experimentación sin componentes físicos.
+    </p>
+  </section>
+
+  <section id="pagina2">
+    <h2>5. Proyecto Sensor Ultrasónico</h2>
+    <p>Para continuar aprendiendo sobre Arduino, puedes explorar un proyecto práctico usando un sensor ultrasónico que activa un LED y un buzzer según la distancia medida.</p>
+    <a href="sistemas_numeracion" class="btn-pagina2">Ir a Sistemas Numeracion</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Diseñado para VS Code • Compuertas lógicas con estilo moderno y responsivo</p>
+</footer>
+
+</body>
+</html>
