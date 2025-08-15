@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensor Ultrasónico con Arduino</title>
+  <style>
+    :root { font-size: 16px; }
+    @media (min-width: 600px) { :root { font-size: 18px; } }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0; padding: 0;
+      background-color: #f4f7f8;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #2a9d8f, #21867a);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      background-color: #264653;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover { background-color: #2a9d8f; }
+
+    main {
+      padding: 1rem; max-width: 900px; margin: auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #264653;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border: none;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      iframe {
+        height: 600px;
+      }
+    }
+
+    .btn-siguiente {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #2a9d8f;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      margin: 2rem auto;
+      transition: background 0.3s ease;
+    }
+
+    .btn-siguiente:hover {
+      background-color: #21867a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #264653;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sensor Ultrasónico con Arduino</h1>
+  </header>
+
+  <nav>
+    <a href="#introduccion">Introducción</a>
+    <a href="#objetivo">Objetivo</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#codigo">Código</a>
+    <a href="#simulacion">Simulación</a>
+    <a href="#conclusion">Conclusión</a>
+  </nav>
+
+  <main>
+    <!-- Introducción -->
+    <section id="introduccion">
+      <h2>1. Introducción</h2>
+      <p>
+        Este proyecto utiliza un sensor ultrasónico para medir distancias y activar un sistema de alarma
+        compuesto por un LED y un zumbador. Es un ejemplo práctico de control de salidas basadas en la
+        entrada de sensores con Arduino.
+      </p>
+    </section>
+
+    <!-- Objetivo -->
+    <section id="objetivo">
+      <h2>2. Objetivo</h2>
+      <p>
+        Medir la distancia de un objeto utilizando el sensor ultrasónico HC-SR04 y activar alertas visuales y sonoras
+        según un umbral definido, desarrollando habilidades en programación y electrónica básica con Arduino.
+      </p>
+    </section>
+
+    <!-- Componentes -->
+    <section id="componentes">
+      <h2>3. Componentes</h2>
+      <ul>
+        <li>Sensor ultrasónico HC-SR04 (pines Trig y Echo)</li>
+        <li>LED de alerta</li>
+        <li>Zumbador (buzzer)</li>
+        <li>Resistencias según necesidad</li>
+        <li>Arduino (Uno, Nano u otro compatible)</li>
+        <li>Cables de conexión y protoboard</li>
+      </ul>
+    </section>
+
+    <!-- Código -->
+    <section id="codigo">
+      <h2>4. Código de Arduino</h2>
+      <pre><code>// Pines del sensor ultrasónico
+const int trigPin = 9;
+const int echoPin = 8;
+
+// Pines de salida
+const int alarmaPin = 7;  // LED
+const int buzzer = 5;     // Zumbador
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(alarmaPin, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600); 
+}
+
+void loop() {
+  long duracion;
+  float distancia;
+
+  // Enviar pulso ultrasónico
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Leer tiempo del rebote del pulso
+  duracion = pulseIn(echoPin, HIGH);
+
+  // Calcular distancia en cm
+  distancia = duracion * 0.034 / 2;
+
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.println(" cm");
+
+  // Condición de alerta
+  if (distancia > 100) {
+    digitalWrite(alarmaPin, HIGH);  // LED encendido
+    digitalWrite(buzzer, LOW);      // buzzer apagado
+  } else {
+    digitalWrite(alarmaPin, LOW);   // LED apagado
+    digitalWrite(buzzer, HIGH);     // buzzer encendido
+  }
+
+  delay(500); // Tiempo de espera entre mediciones
+}</code></pre>
+    </section>
+
+    <!-- Simulación -->
+    <section id="simulacion">
+      <h2>5. Simulación en Tinkercad</h2>
+      <iframe src="https://www.tinkercad.com/embed/ld9uOPzDUe3?editbtn=1" scrolling="no"></iframe>
+      <p>
+        El iframe permite interactuar con la simulación directamente desde la página, observar el comportamiento
+        del sensor ultrasónico y las alertas en tiempo real.
+      </p>
+    </section>
+
+    <!-- Conclusión -->
+    <section id="conclusion">
+      <h2>6. Conclusión</h2>
+      <p>
+        Este proyecto demuestra la integración de sensores y actuadores en Arduino para crear un sistema de alarma funcional.
+        Permite medir distancias y activar salidas según un umbral definido, facilitando la comprensión de la lógica de control,
+        la programación en Arduino y la electrónica digital básica.
+      </p>
+      <p>
+        La simulación en Tinkercad proporciona una manera segura y visual de experimentar con el circuito antes de implementarlo
+        físicamente, reforzando el aprendizaje práctico y conceptual del proyecto.
+      </p>
+      <!-- Enlace a la siguiente página -->
+      <div style="text-align:center;">
+        <a href="funciones_lcd.html" class="btn-siguiente">Siguiente: Funciones LCD</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Diseñado para VS Code • Sensor ultrasónico con Arduino</p>
+  </footer>
+</body>
+</html>
