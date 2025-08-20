@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bucle For / While - LEDs Secuenciales con Arduino</title>
+  <style>
+    :root { font-size: 16px; }
+    @media (min-width: 600px) { :root { font-size: 18px; } }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0; padding: 0;
+      background-color: #f4f7f8;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #2a9d8f, #21867a);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      background-color: #264653;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover { background-color: #2a9d8f; }
+
+    main {
+      padding: 1rem; max-width: 900px; margin: auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #264653;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border: none;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      iframe {
+        height: 600px;
+      }
+    }
+
+    ul { margin-left: 1.2rem; }
+
+    .btn-siguiente {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #2a9d8f;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      margin: 2rem auto;
+      transition: background 0.3s ease;
+    }
+
+    .btn-siguiente:hover {
+      background-color: #21867a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #264653;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bucle For / While</h1>
+    <p>Control de LEDs Secuenciales con Arduino</p>
+  </header>
+
+  <nav>
+    <a href="#introduccion">Introducción</a>
+    <a href="#codigo">Código</a>
+    <a href="#descripcion">Descripción</a>
+    <a href="#simulacion">Simulación</a>
+    <a href="#aplicaciones">Aplicaciones</a>
+    <a href="#conclusiones">Conclusiones</a>
+  </nav>
+
+  <main>
+    <!-- Introducción -->
+    <section id="introduccion">
+      <h2>1. Introducción</h2>
+      <p>
+        Este informe describe el funcionamiento de un programa desarrollado en C++ para Arduino. 
+        El código controla el encendido y apagado secuencial de siete LEDs conectados a pines digitales, 
+        generando un efecto visual ordenado y repetitivo.
+      </p>
+    </section>
+
+    <!-- Código -->
+    <section id="codigo">
+      <h2>2. Código Utilizado</h2>
+      <pre><code>// C++ code
+int leds[] = {3, 4, 5, 6, 7, 8, 9};
+int numLeds = 7;
+
+void setup() {
+    for (int i = 0; i < numLeds; i++) {
+        pinMode(leds[i], OUTPUT);
+    }
+}
+
+void loop() {
+    int i = 0;
+    while (i < numLeds) {
+        encender_apagar(i);
+        i++;
+    }
+}
+
+void encender_apagar(int i) {
+    digitalWrite(leds[i], HIGH);
+    delay(1000);
+    digitalWrite(leds[i], LOW);
+    delay(1000);
+}</code></pre>
+    </section>
+
+    <!-- Descripción -->
+    <section id="descripcion">
+      <h2>3. Descripción del Funcionamiento</h2>
+      <p>
+        El programa utiliza un arreglo de pines para definir los LEDs conectados. 
+        En el <b>setup()</b>, se configuran como salidas. 
+        En el <b>loop()</b>, se recorre el arreglo de manera secuencial llamando a la función 
+        <i>encender_apagar()</i>, la cual enciende un LED durante 1 segundo, lo apaga otro segundo y 
+        luego continúa con el siguiente. Este proceso se repite indefinidamente.
+      </p>
+    </section>
+
+    <!-- Simulación -->
+    <section id="simulacion">
+      <h2>4. Simulación en Tinkercad</h2>
+      <iframe src="https://www.tinkercad.com/embed/1f6MHHnlJYc?editbtn=1" scrolling="no"></iframe>
+      <p>
+        En esta simulación realizada en Tinkercad, se observa cómo los LEDs se encienden y apagan en forma secuencial, 
+        reproduciendo el comportamiento descrito en el código. Esta herramienta permite validar el diseño de manera 
+        interactiva antes de montarlo físicamente.
+      </p>
+    </section>
+
+    <!-- Aplicaciones -->
+    <section id="aplicaciones">
+      <h2>5. Aplicaciones Prácticas</h2>
+      <ul>
+        <li>Señalización luminosa (ejemplo: semáforos).</li>
+        <li>Efectos decorativos (luces navideñas, juegos de luces).</li>
+        <li>Aprendizaje básico de control secuencial en Arduino.</li>
+        <li>Simulación de estados en sistemas electrónicos.</li>
+      </ul>
+    </section>
+
+    <!-- Conclusiones -->
+    <section id="conclusiones">
+      <h2>6. Conclusiones</h2>
+      <p>
+        Este proyecto demuestra una forma sencilla y eficiente de controlar múltiples LEDs mediante 
+        programación en Arduino. El uso de arreglos y funciones facilita la organización del código 
+        y su escalabilidad. Los retardos de un segundo permiten visualizar claramente el efecto 
+        secuencial, aunque pueden ajustarse según la necesidad del proyecto.
+      </p>
+      <div style="text-align:center;">
+        <a href="sensor_ultrasonico.html" class="btn-siguiente">Siguiente: Sensor Ultrasonico</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Proyecto Arduino • Informe LEDs Secuenciales</p>
+  </footer>
+</body>
+</html>
