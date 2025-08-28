@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interacción Teclado-LCD - Actividad</title>
+  <title>Interacción Teclado-LCD - Informe</title>
   <style>
     :root { font-size: 16px; }
     @media (min-width: 600px) { :root { font-size: 18px; } }
@@ -17,16 +17,6 @@
       background: linear-gradient(90deg, #2a9d8f, #21867a);
       color: white; padding: 1rem; text-align: center;
     }
-    nav {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
-      background-color: #264653; padding: 0.5rem;
-    }
-    nav a {
-      color: white; text-decoration: none;
-      padding: 0.5rem 1rem; border-radius: 4px;
-      transition: background 0.3s ease;
-    }
-    nav a:hover { background-color: #2a9d8f; }
     main {
       padding: 1rem; max-width: 900px; margin: auto;
     }
@@ -71,13 +61,8 @@
   </style>
 </head>
 <body>
-  <header><h1>Interacción Teclado-LCD - Actividad</h1></header>
-  <nav>
-    <a href="#introduccion">Introducción</a>
-    <a href="#codigo">Código Arduino</a>
-    <a href="#simulacion">Simulación</a>
-    <a href="#conclusion">Conclusión</a>
-  </nav>
+  <header><h1>Interacción Teclado-LCD - Informe</h1></header>
+  
   <main>
     <!-- Introducción -->
     <section id="introduccion">
@@ -177,9 +162,10 @@ void mostrarMensajeInicio() {
     <!-- Simulación -->
     <section id="simulacion">
       <h2>3. Simulación en Tinkercad</h2>
-      <iframe src="https://www.tinkercad.com/embed/1H2lEgfEgM7?editbtn=1"></iframe>
+      <iframe src="https://www.tinkercad.com/embed/iLEiDsWJWXe?editbtn=1"></iframe>
       <p>
-        El iframe permite interactuar con la simulación directamente desde la página, observar la entrada del usuario, el comportamiento del LCD y las alertas en LED y buzzer.
+        En el visor se observa la simulación desarrollada en Tinkercad, donde se puede interactuar con el teclado, ver el comportamiento del LCD, el LED y el buzzer.  
+        Esto permite validar el funcionamiento del sistema sin necesidad de armar físicamente el circuito.
       </p>
     </section>
 
@@ -193,7 +179,7 @@ void mostrarMensajeInicio() {
         La simulación en Tinkercad permite experimentar de forma segura y visual, verificando el funcionamiento del sistema sin necesidad de hardware físico.
       </p>
       <div class="next-page">
-        <a href="Examen Teorico.html">Siguiente: Examen Teorico</a>
+        <a href="index.html">Siguiente: Home</a>
       </div>
     </section>
   </main>
